@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student View</title>
+    <style>
+        .tbhead {
+            text-align: center;
+            font-family: cursive;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background-color: orchid; 
+            color: #fff; 
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table td, .table th {
+            border: 1px solid #ddd; 
+            padding: 10px;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .table img {
+            max-height: 50px;
+            max-width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact">
+        <div class="container">
+           <div class="row">
+              <div class="col-lg-12">
+                 <div class="titlepage text_align_center">
+                   <h2 class="tbhead">STUDENT VIEW</h2>
+                   <table class="table" align="center">
+                      <thead>
+                          <tr>
+                              <th>NAME</th>
+                              <th>EMAIL</th>
+                              <th>PHONE</th>                          
+                              <th>AGE</th>
+                              <th>ENROLLMENT</th>                          
+                              <th>COURSE</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in res %}
+                          <tr>
+                              <td>{{ i.name }}</td>
+                              <td>{{ i.email }}</td>
+                              <td>{{ i.number }}</td>
+                              <td>{{ i.age }}</td>
+                              <td>{{ i.enrollmentdate }}</td>
+                              <td>{{ i.course }}</td>
+                          </tr>
+                      {% endfor %}
+                      </tbody>
+                  </table>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+</body>
+</html>

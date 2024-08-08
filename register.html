@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+
+
+        .h-custom {
+            background-color: #8fc4b7;
+        }
+         .d-flex {
+            display: flex !important;
+        }
+
+        .justify-content-center {
+            justify-content: center !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+    
+        .registration-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .form-outline {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        select:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: 0.3rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn-success {
+            color: #fff;
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            color: #fff;
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-lg {
+            padding: 0.75rem 1.25rem;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            border-radius: 0.3rem;
+        }
+
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.25rem !important;
+        }
+
+        .p-4 {
+            padding: 1.5rem !important;
+        }
+
+        .p-md-5 {
+            padding: 3rem !important;
+        }
+
+        .px-md-2 {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+
+        .pb-2 {
+            padding-bottom: 0.5rem !important;
+        }
+
+        .pb-md-0 {
+            padding-bottom: 0 !important;
+        }
+
+        .mb-md-5 {
+            margin-bottom: 3rem !important;
+        }
+    </style>
+</head>
+<body>
+    <section class="h-100 h-custom" style="background-color: #8fc4b7; height: 100vh;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card rounded-3" style="width: 100%; height: 500px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration</h3>
+                            <form method="post" class="px-md-2" onsubmit="return validateForm()">
+                                {% csrf_token %}
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Email</label>
+                                    <input type="email" id="email" name="mail" class="form-control" />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Phone Number</label>
+                                    <input type="tel" id="phone" name="number" class="form-control" />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Age</label>
+                                    <input type="number" id="age" name="age" class="form-control" />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Enrollment Date</label>
+                                    <input type="date" id="enrollmentdate" name="enrollmentdate" class="form-control" />
+                                </div>
+                                <div class="mb-4">
+                                    <label for="course">Course</label>
+                                    <select id="course" name="course" data-mdb-select-init>
+                                        <option value="Python">Python</option>
+                                        <option value="PHP">PHP</option>
+                                    </select>
+                                </div>
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg mb-1">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const enrollmentDate = document.getElementById('enrollmentdate').value;
+
+            if (!name || !email || !phone || !age || !enrollmentDate) {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+
+            return true;
+        }
+    </script>
+</body>
+</html>
